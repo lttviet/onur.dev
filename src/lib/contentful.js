@@ -9,9 +9,8 @@ const fetchGraphQL = cache(async (query, preview = isDevelopment) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${
-          preview ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN : process.env.CONTENTFUL_ACCESS_TOKEN
-        }`
+        Authorization: `Bearer ${preview ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN : process.env.CONTENTFUL_ACCESS_TOKEN
+          }`
       },
       body: JSON.stringify({ query })
     })
@@ -108,18 +107,6 @@ export const getPost = cache(async (slug, preview = isDevelopment) => {
                     }
                     ... on Tweet {
                       id
-                    }
-                    ... on Carousel {
-                      imagesCollection {
-                        items {
-                          title
-                          description
-                          url(transform: {
-                            format: AVIF,
-                            quality: 50
-                          })
-                        }
-                      }
                     }
                   }
                 }
