@@ -25,7 +25,9 @@ export async function GET(_, { params }) {
     getRegularFont(),
     getBoldFont()
   ])
-  if (!seoData) return null
+  if (!seoData) {
+    return new Response('Not Found', { status: 404 })
+  }
   const {
     seo: { title, ogImageTitle, ogImageSubtitle }
   } = seoData
